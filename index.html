@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRB Store Website Release Countdown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #2b2b52, #3b3b98);
+            color: white;
+            text-align: center;
+        }
+        .countdown-container {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 3em;
+            color: #bb86fc;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            font-size: 2em;
+            letter-spacing: 2px;
+            color: #bb86fc;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>CRB Store Website Release Countdown</h1>
+        <div id="countdown" class="countdown"></div>
+    </div>
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("January 1, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (difference < 0) {
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
